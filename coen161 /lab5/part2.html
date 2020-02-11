@@ -1,0 +1,90 @@
+<!-- Alex Fang-->
+<!-- COEN 161 - Lab5-->
+<!-- 2/3/20-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 4 - Part 2</title>
+	<style>
+		/* add any necessary styles here */
+		#resultDiv {
+			visibility: hidden;
+		}	
+	</style>
+</head>
+<body>
+	<h1>Calculator</h1>
+	<label>Input #1 <input id="input1" type="text"></label>
+	<label>Input #2 <input id="input2" type="text"></label>
+	<input type="button" value="add">
+	<input type="button" value="subtract">
+	<input type="button" value="multiply">
+	<input type="button" value="divide"> 
+	<div id="resultDiv">Operator: <span id="operator"></span><br>Result:<span id="result"></span><br><input type="button" value="clear"></div>
+	<script>
+		// Your code goes here
+		var buttons = document.querySelectorAll("input[type=button]");
+	
+		for(var i = 0; i < buttons.length; i++){
+			
+			switch(buttons[i].value){
+					case 'add':
+						buttons[i].onclick = function () {
+							var input1 = document.getElementById("input1").value;
+							var input2 = document.getElementById("input2").value;
+							var result = parseFloat(input1) + parseFloat(input2);
+							document.getElementById("operator").innerHTML = "Addition";
+							document.getElementById("result").innerHTML = result;
+							document.getElementById("resultDiv").style.visibility = "visible";
+						}; 
+						break;
+					case 'subtract':
+						buttons[i].onclick = function () {
+							var input1 = document.getElementById("input1").value;
+							var input2 = document.getElementById("input2").value;
+							var result = parseFloat(input1) - parseFloat(input2);
+							document.getElementById("operator").innerHTML = "Subtraction";
+							document.getElementById("result").innerHTML = result;
+							document.getElementById("resultDiv").style = "visibility: visible";
+						};
+						break;
+					case 'multiply':
+						buttons[i].onclick = function () {
+							var input1 = document.getElementById("input1").value;
+							var input2 = document.getElementById("input2").value;
+							var result = parseFloat(input1) * parseFloat(input2);
+							document.getElementById("operator").innerHTML = "Multiplication";
+							document.getElementById("result").innerHTML = result;
+							document.getElementById("resultDiv").style = "visibility: visible";
+						}; 
+						break;
+					case 'divide':
+						buttons[i].onclick = function () {
+							var input1 = document.getElementById("input1").value;
+							var input2 = document.getElementById("input2").value;
+							var result = Math.floor(parseFloat(input1) / parseFloat(input2));
+							document.getElementById("operator").innerHTML = "Division";
+							document.getElementById("result").innerHTML = "" + result;
+							document.getElementById("resultDiv").style = "visibility: visible";
+						}; 
+						break;
+					case 'clear':
+						buttons[i].onclick = function clear() {
+							document.getElementById("input1").value = "";
+							document.getElementById("input2").value = "";
+							document.getElementById("resultDiv").style = "visibility: hidden";
+						};
+					default:
+						break;
+
+			}
+		}
+
+		//ADD() input 1 + input 2
+		//SUBTRACT() input 1 - input 2
+		//MULTIPLY() input 1 * input 
+		//DIVIDE() input 1 / input 2	make sure input 2 != 0
+	</script>
+</body>
+</html>

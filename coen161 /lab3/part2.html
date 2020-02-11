@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Functions</title>
+</head>
+<body>
+	<script>
+
+		/* Test data */
+		var minArray = [5, 4, 3, 2, 1];
+		var str1 = "racecar";
+		var str2 = "madame";
+		var str3 = "palindrome";
+		var occurArray = ["one", "two", "two", "three", "three", "three"];
+		
+		/* 
+			1. Write a function to find the min in the given array 
+		*/
+		function findMin(arr) {
+			if(arr.length == 0){
+				console.log("Error: Empty Array \n");
+				return null;
+			}
+			var finalMin = arr[0];
+			for(var i = 1; i < arr.length; i++){
+				if(arr[i] < finalMin){
+					finalMin = arr[i];
+				}
+			}
+			return finalMin;
+		}
+
+		// call and log the result
+		console.log(findMin(minArray));
+
+		/* 
+			2. Write a function that returns true if a string is a palindrome, otherwise return false 
+		*/
+		function isPalindrome(str) {
+			if (str === undefined)
+			{
+				console.log("Error: Undefined string input.\n");
+                                return null;
+			}
+			var i, j;
+			for(i = 0, j = str.length-1; i < str.length, j >=0; i++, j--){
+				if (str[i] != str[j])
+				{
+					return false;
+				}
+			}  	
+			return true; 	
+		}	
+
+		console.log(isPalindrome(str1));
+		console.log(isPalindrome(str2));
+ 		console.log(isPalindrome(str3));
+
+		/* 
+			3. Write a function that returns the string that occurs the most in an array 
+		*/
+		function maxOccurs(arr) {
+			if (arr.length == 0)
+			{
+				console.log("Error: Empty array.\n");
+				return null;
+			}
+			var count = {};
+			var mostOccurences;
+			var max = 0; 	
+			for (var i = 0; i < arr.length; i++)
+			{
+				var currentWord = arr[i];
+				if (count[currentWord] === undefined)	
+					count[currentWord] = 1;
+				else 
+					count[currentWord] = count[currentWord] + 1;
+				if(count[currentWord] > max)
+				{
+					max = count[currentWord];			 
+					mostOccurences = count[currentWord];
+				}						
+			}
+			return mostOccurences;		
+		}									
+		console.log(maxOccurs(occurArray));
+
+	</script>
+</body>
+</html>
+
+
+
+

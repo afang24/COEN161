@@ -1,0 +1,59 @@
+<!-- Alex Fang-->
+<!-- COEN 161 - Lab5-->
+<!-- 2/3/20-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 4 - Part 1</title>
+	<style>
+		p[id] {
+			height: 100px;
+		}
+
+		.flashy {
+		  animation: blinker 1s linear infinite;
+		}
+
+		@keyframes blinker {  
+		  50% { opacity: 0; }
+		}
+	</style>
+</head>
+<body>
+	<label>My Input: <input type="text" id="myInput"></label><button type="button">Submit</button>
+	<p>All UpperCase</p>
+	<hr>
+	<p id="allUpper"></p>
+	<p>All Lowercase</p>
+	<hr>
+	<p id="allLower"></p>
+	<p>Red Text</p>
+	<hr>
+	<p id="redText"></p>
+	<p>Flashy Text</p>
+	<hr>
+	<p id="flashyText"></p>
+	<script>
+		// Your code goes here
+		var submit = document.querySelector("button[type=button]");
+		submit.onclick = modify;
+		function modify(){
+			var str = document.getElementById("myInput").value;
+			console.log(str);
+			var pToUpper = document.getElementById("allUpper");
+			var pToLower = document.getElementById("allLower");
+			var pToRed = document.getElementById("redText");
+			var pFlashyText = document.getElementById("flashyText");
+
+			pToUpper.innerHTML = str.toUpperCase();
+			pToLower.innerHTML = str.toLowerCase();
+			pToRed.innerHTML = str;
+			pToRed.style = "color: red";
+			pFlashyText.innerHTML = str;
+			pFlashyText.className = "flashy";
+		}
+
+	</script>
+</body>
+</html>

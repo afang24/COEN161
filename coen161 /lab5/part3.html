@@ -1,0 +1,41 @@
+<!-- Alex Fang-->
+<!-- COEN 161 - Lab5-->
+<!-- 2/3/20-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 4 - Part 3</title>
+</head>
+<body>
+	<!-- Sample HTML -->
+	<label>My Input: <input type="text" id="myInput"></label><button type="button">Submit</button>
+	<img src="http://students.engr.scu.edu/~adiaztos/resources/choconut.jpg" alt="A Goat">
+	<p id="somePara"><span class="allSpans"></span></p>
+
+	<script>
+		// Your function goes here 
+		function getElementsByAttribute (){
+			var elements = document.getElementsByTagName('*');
+			var attribute = document.getElementById("myInput");
+			var arrOfElts = [];
+			console.log(arrOfElts);
+			var i;
+			for( i=0; i < elements.length; i++){
+				if (elements[i].getAttribute(attribute) === null)
+				{
+					continue;
+				}else {
+					arrOfElts.push(elements[i]);
+				}
+			} 
+			var para = document.createElement("p");
+			var textNode = document.createTextNode(arrofElts);
+			para.appendChild(textNode); 
+			document.getElementById("result").appendChild(para);
+		}	
+		
+
+	</script>
+</body>
+</html>

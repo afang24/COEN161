@@ -1,0 +1,120 @@
+<!-- Alex Fang
+     COEN 161 - Lab 4
+     1/27/20
+-->
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Binary Search Tree </title>
+</head>
+<body>
+    <script type="text/javascript" src="http://students.engr.scu.edu/~adiaztos/resources/testBst.js"></script>
+    <script>
+            (function () {
+                "use strict";
+                
+                function Node(val) {
+                    this.val = val;
+                    this.right = null;
+                    this.left = null; 
+                };
+
+                function BinarySearchTree () {
+                    this.root = null;
+                };
+
+                BinarySearchTree.prototype.insert = function(val){
+                        var root = this.root;
+                        
+                        if(!this.root){             //if its an empty tree create node as top
+                            this.root = new Node (val);
+                            return;
+                        }
+                        var currentNode = root;
+				        var newNode = new Node(val);
+
+                        while(currentNode){
+                            if(val < currentNode.val){
+                                if(!currentNode.left){
+                                    currentNode.left = newNode;
+                                    break;
+                                }
+                                else{
+                                    currentNode = currentNode.left;
+                                }
+                            }
+                            else{
+                                if(!currentNode.right){
+                                    currentNode.right = newNode;
+                                    break;
+                                }
+                                else{
+                                    currentNode = currentNode.right;
+                                }     
+                            }
+                        }
+                        
+                };
+
+                BinarySearchTree.prototype.search = function(val){
+                    var currentNode = this.root;
+
+                    while(currentNode){
+                        if(val < currentNode.val){			//less than node
+                            currentNode = currentNode.left;
+                        }
+                        else if(val > currentNode.val){		// greater than node
+                            currentNode = currentNode.right;
+                        }
+                        else{	//value found
+                            return true;
+                        }
+                    }
+                    return false;	//if made it through loop without returning true
+                };  
+                
+                BinarySearchTree.prototype.inorder = function(fn){
+                    var node = this.root;	
+
+                    function order(x){
+                        if(x){		
+                            order(x.left);
+                            fn(x.val);
+                            order(x.right);
+                        }
+                    }
+                    order(node);
+                };
+
+                var bst = new BinarySearchTree();        
+                testBst(bst);
+
+
+            })()
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
